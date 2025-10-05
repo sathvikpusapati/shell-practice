@@ -2,7 +2,7 @@
 
 number=$(id -u)
 
-if[ $number -ne 0 ]; then
+if [ $number -ne 0 ]; then
 
     echo "ERROR : provide root privalages to run the script"
     exit 1
