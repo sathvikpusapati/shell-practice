@@ -30,30 +30,30 @@ VALIDATE() {
     fi
 }
 
-dnf list installed mysql >>& $LOG_FILE
+dnf list installed mysql &>> $LOG_FILE
 
 if [ $? -ne 0 ];then
-    dnf install mysql -y >>& $LOG_FILE
+    dnf install mysql -y &>> $LOG_FILE
     VALIDATE $? "MYSQL"
 else
 
     echo -e "MYSQL already exist $Y.....SKIPPING $N"
 fi
 
-dnf list installed nodejs >>& $LOG_FILE
+dnf list installed nodejs &>> $LOG_FILE
 
 if [ $? -ne 0 ];then
-    dnf install nodejs -y >>& $LOG_FILE
+    dnf install nodejs -y &>> $LOG_FILE
     VALIDATE $? "NODEJS"
 else
 
     echo -e "NODEJS already exist $Y.....SKIPPING $N"
 fi
 
-dnf list installed nginx >>& $LOG_FILE
+dnf list installed nginx &>> $LOG_FILE
 
 if [ $? -ne 0 ];then
-    dnf install nginx -y >>& $LOG_FILE
+    dnf install nginx -y &>> $LOG_FILE
     VALIDATE $? "NGINX"
 else
 
