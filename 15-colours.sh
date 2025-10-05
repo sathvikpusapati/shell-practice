@@ -17,11 +17,11 @@ VALIDATE() {
 
     if [ $1 -ne 0 ]; then
 
-        echo "ERROR : $2 installation is $R... FAILURE$N"
+        echo -e "ERROR : $2 installation is $R... FAILURE$N"
 
     else
 
-        echo "$2 installation is $G...... SUCCESS$N"
+        echo -e "$2 installation is $G...... SUCCESS$N"
 
     fi
 }
@@ -33,7 +33,7 @@ if [ $? -ne 0];then
     VALIDATE $? "MYSQL"
 else
 
-    echo "MYSQL already exist $Y.....SKIPPING $N"
+    echo -e "MYSQL already exist $Y.....SKIPPING $N"
 fi
 
 dnf list installed nodejs
@@ -43,7 +43,7 @@ if [ $? -ne 0];then
     VALIDATE $? "NODEJS"
 else
 
-    echo "NODEJS already exist $Y.....SKIPPING $N"
+    echo -e "NODEJS already exist $Y.....SKIPPING $N"
 fi
 
 dnf list installed nginx
@@ -53,5 +53,5 @@ if [ $? -ne 0];then
     VALIDATE $? "NGINX"
 else
 
-    echo "NGINX already exist $Y.....SKIPPING $N"
+    echo -e "NGINX already exist $Y.....SKIPPING $N"
 fi
