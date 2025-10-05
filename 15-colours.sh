@@ -28,7 +28,7 @@ VALIDATE() {
 
 dnf list installed mysql
 
-if [ $? -ne 0];then
+if [ $? -ne 0 ];then
     dnf install mysql -y
     VALIDATE $? "MYSQL"
 else
@@ -38,7 +38,7 @@ fi
 
 dnf list installed nodejs
 
-if [ $? -ne 0];then
+if [ $? -ne 0 ];then
     dnf install nodejs -y
     VALIDATE $? "NODEJS"
 else
@@ -48,7 +48,7 @@ fi
 
 dnf list installed nginx
 
-if [ $? -ne 0];then
+if [ $? -ne 0 ];then
     dnf install nginx -y
     VALIDATE $? "NGINX"
 else
