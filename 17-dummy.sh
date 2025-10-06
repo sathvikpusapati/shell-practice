@@ -1,6 +1,6 @@
 #!/bin/bash
 
-id=$(id -u)
+idd=$(id -u)
 
 R="\e[31m"
 G="\e[32m"
@@ -9,13 +9,13 @@ N="\e[0m"
 
 log_folder="/var/log/shell-script"
 
-log_name=$( echo $0 | cuut -d "." -f1)
+log_name=$( echo $0 | cut -d "." -f1)
 
 log_file="$log_folder/log_name.log"
 
 echo "script executed at : $(date)" | tee -a $LOG_FILE
 
-if [ id -ne 0 ]; then
+if [ $idd -ne 0 ]; then
     echo  -e " $R ERROR :  PLEASE GIVE ROOT PRIVELLAGE FOR THE SCRIPT $N" | tee -a $log_file
     exit 1
 fi
