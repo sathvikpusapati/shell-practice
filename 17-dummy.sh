@@ -70,3 +70,5 @@ else
 fi
 
 echo "script ended at : $(date)" | tee -a $LOG_FILE
+
+echo "dummy"
