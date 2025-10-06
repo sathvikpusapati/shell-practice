@@ -34,7 +34,7 @@ VALIDATE()
 
 }
 
-dnf list installed mysql &>> log_file
+dnf list installed mysql  &>> log_file
  if [ $? -ne 0 ]; then
 
     dnf install mysql -y &>> log_file
@@ -58,15 +58,15 @@ else
 fi
 
 
-dnf list installed python3 &>> log_file
+dnf list installed nodejs &>> log_file
  if [ $? -ne 0 ]; then
 
-    dnf install python3 -y &>> log_file
+    dnf install nodejs -y &>> log_file
 
-    VALIDATE $? "python3"
+    VALIDATE $? "nodejs"
 else
 
-    echo -e "python3 INSTALLATION $Y.....SKIPPING$N" | tee -a $log_file
+    echo -e "nodejs INSTALLATION $Y.....SKIPPING$N" | tee -a $log_file
 fi
 
 echo "script ended at : $(date)" | tee -a $LOG_FILE
