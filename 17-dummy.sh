@@ -34,10 +34,10 @@ VALIDATE()
 
 }
 
-dnf list installed mysql  &>> log_file
+dnf list installed mysql  &>> $log_file
  if [ $? -ne 0 ]; then
 
-    dnf install mysql -y &>> log_file
+    dnf install mysql -y &>> $log_file
 
     VALIDATE $? "MYSQL"
 else
@@ -46,10 +46,10 @@ else
 fi
 
 
-dnf list installed nginx &>> log_file
+dnf list installed nginx &>> $log_file
  if [ $? -ne 0 ]; then
 
-    dnf install nginx -y &>> log_file
+    dnf install nginx -y &>> $log_file
 
     VALIDATE $? "NGINX"
 else
@@ -58,10 +58,10 @@ else
 fi
 
 
-dnf list installed nodejs &>> log_file
+dnf list installed nodejs &>> $log_file
  if [ $? -ne 0 ]; then
 
-    dnf install nodejs -y &>> log_file
+    dnf install nodejs -y &>> $log_file
 
     VALIDATE $? "nodejs"
 else
