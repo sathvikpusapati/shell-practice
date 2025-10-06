@@ -11,7 +11,7 @@ log_folder="/var/log/shell-script"
 
 log_name=$( echo $0 | cut -d "." -f1)
 
-log_file="$log_folder/log_name.log"
+log_file="$log_folder/$log_name.log"
 
 echo "script executed at : $(date)" | tee -a $LOG_FILE
 
