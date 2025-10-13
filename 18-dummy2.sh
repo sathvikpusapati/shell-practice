@@ -27,7 +27,7 @@ if [ $number -ne 0 ]; then
 
     echo "PLEASE RUN SCRIPT WITH $R ROOT PRIVILLAGES $N" | tee -a $logfile
     exit 1
-
+fi
 
 VALIDATE (){
 
