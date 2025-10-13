@@ -25,7 +25,7 @@ echo " script started at $(date) " | tee -a $logfile
 
 if [ $number -ne 0 ]; then
 
-    echo "PLEASE RUN SCRIPT WITH $R ROOT PRIVILLAGES $N" | tee -a $logfile
+    echo -e "PLEASE RUN SCRIPT WITH $R ROOT PRIVILLAGES $N" | tee -a $logfile
     exit 1
 fi
 
@@ -34,11 +34,11 @@ VALIDATE (){
 
     if [ $1 -ne 0 ]; then
     
-        echo "$G $2 installed succesfully$N" | tee -a $logfile
+        echo -e "$G $2 installed succesfully$N" | tee -a $logfile
     
     else
     
-        echo "$R $2 not installed $N" | tee -a $logfile
+        echo -e "$R $2 not installed $N" | tee -a $logfile
     
     fi
 }
@@ -53,7 +53,7 @@ if [ $? -ne 0 ]; then
 
 else
 
-    echo "MYSQL is already installed $Y......skipping installation$N" | tee -a $logfile
+    echo -e "MYSQL is already installed $Y......skipping installation$N" | tee -a $logfile
 
 
 fi
@@ -66,7 +66,7 @@ if [ $? -ne 0 ]; then
     VALIDATE $? "NGINX"
 else
 
-    echo "NGINX is already installed $Y.....skipping installation$N" | tee -a $logfile
+    echo -e "NGINX is already installed $Y.....skipping installation$N" | tee -a $logfile
 fi
 
 dnf list installed nodejs &>> $logfile
@@ -77,9 +77,9 @@ if [ $? -ne 0 ]; then
     VALIDATE $? "NODEJS"
 else
  
-    echo "NODEJS is already installed $Y ......skipping installation$N" | tee -a $logfile
+    echo -e "NODEJS is already installed $Y ......skipping installation$N" | tee -a $logfile
 fi
 
-echo "environment variable owner name is $name" | tee -a $logfile
+echo -e "environment variable owner name is $name" | tee -a $logfile
 
-echo "SCript ended at $(date) " | tee -a $logfile 
+echo -e "SCript ended at $(date) " | tee -a $logfile 
