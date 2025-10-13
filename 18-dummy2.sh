@@ -60,7 +60,7 @@ fi
 
 dnf list installed nginx &>> $logfile
 
-if[ $? -ne 0 ]; then
+if [ $? -ne 0 ]; then
 
     dnf install nginx -y &>> $logfile
     VALIDATE $? "NGINX"
@@ -71,7 +71,7 @@ fi
 
 dnf list installed nodejs &>> $logfile
 
-if[ $? -ne 0 ]; then
+if [ $? -ne 0 ]; then
 
     dnf install nodejs -y &>> $logfile
     VALIDATE $? "NODEJS"
