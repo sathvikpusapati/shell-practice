@@ -1,85 +1,77 @@
 #!/bin/bash
 
 R="\e[31m"
-G="\e[32m"
-Y="\e[33m"
-N="\e[0m"
-
-echo "enter your name"
-
-read user 
-
-number=$(id -u)
+G="e[32m"
+Y="e[33m"
+N="e[0m"
 
 script_name=$( echo $0 | cut -d "." -f1)
+folder="/var/log/shell-script"
 
-logs_folder="/var/log/shell-script"
-
-logfile="$logs_folder/$script_name.log"
-
-mkdir -p $logs_folder
+log="$folder/$script_name.log"
 
 
 
-echo " script started at $(date) " | tee -a $logfile
+echo "script start time $(date)"
 
-if [ $number -ne 0 ]; then
+mkdir -p $folder
 
-    echo -e "PLEASE RUN SCRIPT WITH $R ROOT PRIVILLAGES $N" | tee -a $logfile
+if [ "$(id -u)" -ne 0 ]; then
+
+    echo -e "$R ERROR PLEASE GIVE ROOT PERMISSIONS $N" | tee -a $log
     exit 1
 fi
 
-VALIDATE (){
-
-
+VALIDATE()
+{
     if [ $1 -eq 0 ]; then
-    
-        echo -e "$G $2 installed succesfully$N" | tee -a $logfile
-    
+
+        echo -e "$G $2 installation success $N" | tee -a $log
     else
-    
-        echo -e "$R $2 not installed $N" | tee -a $logfile
-    
+        echo -e "$R $2 installation failed $N" | tee -a $log
     fi
+
 }
 
-dnf list installed mysql &>> $logfile
+dnf list installed mysql &>> $log
 
-if [ $? -ne 0 ]; then 
+if [ $? -ne 0 ]; then
 
-    dnf install mysql-server -y &>> $logfile
+    dnf install mysql-server -y &>> $log
     VALIDATE $? "MYSQL"
-
-
 else
 
-    echo -e "MYSQL is already installed $Y......skipping installation$N" | tee -a $logfile
-
-
+    echo -e "$Y MYSQL ALREADY INSTALLED $N" | tee -a $log
 fi
 
-dnf list installed nginx &>> $logfile
+dnf list installed redis &>> $log
 
 if [ $? -ne 0 ]; then
 
-    dnf install nginx -y &>> $logfile
-    VALIDATE $? "NGINX"
+    dnf install redis -y &>> $log
+    VALIDATE $? "REDIS"
 else
 
-    echo -e "NGINX is already installed $Y.....skipping installation$N" | tee -a $logfile
+    echo -e "$Y REDIS ALREADY INSTALLED $N" | tee -a $log
 fi
 
-dnf list installed nodejs &>> $logfile
+dnf list installed nodejs &>> $log
+ if [ $? -ne 0 ]; then
 
-if [ $? -ne 0 ]; then
+    dnf install nodejs -y &>> $log
 
-    dnf install nodejs -y &>> $logfile
-    VALIDATE $? "NODEJS"
+    VALIDATE $? "nodejs"
 else
- 
-    echo -e "NODEJS is already installed $Y ......skipping installation$N" | tee -a $logfile
+
+    echo -e "$Y NODEJS ALREADY INSTALLED $N" | tee -a $log
 fi
 
-echo -e "environment variable owner name is $name" | tee -a $logfile
+echo "SCRIPT END TIME $(date)" | tee -a $log
 
-echo -e "SCript ended at $(date) " | tee -a $logfile 
+echo "log file will display after 5 seconds"
+
+sleep 5
+
+cat $log
+
+
