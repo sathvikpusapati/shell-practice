@@ -19,7 +19,7 @@ logfile="$logs_folder/$script_name.log"
 
 mkdir -p $logs_folder
 
-name=sat
+
 
 echo " script started at $(date) " | tee -a $logfile
 
