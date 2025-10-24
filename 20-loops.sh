@@ -12,7 +12,7 @@ name=$( echo $0 | cut -d "." -f1)
 
 logfile=$folder/$name.log
 
- mkdir -p $folder &>> $logfile
+sudo mkdir -p $folder 
 
 if [ id -ne 0 ]; then
     echo -e "$R please give root access to continue$N" | tee -a $logfile
