@@ -15,7 +15,7 @@ if [ $number -ne 0 ]; then
     exit 1
 fi
 
-mkdir -p $LOGS_FOLDER
+mkdir -p $LOGS_FOLDER # by using p if already installed it stays calm doesnt throws any error
 echo "script executed at : $(date)" | tee -a $LOG_FILE
 VALIDATE() {
 
