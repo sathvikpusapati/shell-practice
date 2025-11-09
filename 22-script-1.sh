@@ -6,5 +6,5 @@ echo "my country is $name"
 
 echo "PID of script-1 is $$"
 
-sh 23-script-2.sh
+source  ./23-script-2.sh
 
