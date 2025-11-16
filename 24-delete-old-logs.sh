@@ -16,7 +16,7 @@ log_file=$log_folder/$script_name.log
 
 mkdir -p $log_folder
 
-echo -e "SCRIPT EXECUTED AT $(date +%s) " | tee -a $log_file
+echo  "SCRIPT EXECUTED AT $(date) " | tee -a $log_file
 
 SOURCE_DIR="/home/ec2-user/app-logs"
 
