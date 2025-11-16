@@ -21,7 +21,7 @@ fi
 
 USAGE(){
 
-    echo "usage :: sudo sh backup.sh <source_dir> <destination_dir> <days>[optional, default 14 days] "
+    echo -e "$R usage :: sudo sh backup.sh <source_dir> <destination_dir> <days>[optional, default 14 days] "
     exit 1
 }
 
