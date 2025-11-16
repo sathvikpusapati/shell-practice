@@ -16,4 +16,23 @@ log_file=$log_folder/$script_name.log
 
 mkdir -p $log_folder
 
-echo "SCRIPT EXECUTED AT $(date +%s) "
+echo -e "SCRIPT EXECUTED AT $(date +%s) " | tee -a $log_file
+
+SOURCE_DIR="/home/ec2-user/app-logs"
+
+if [ ! -d $SOURCE_DIR ]; then
+    echo -e "ERROR :: $SOURCE_DIR dose not exist "
+    exit 1
+fi
+
+FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -type f -mtime +14)
+
+while IFS= read -r filepath 
+do
+    echo "deleting this file $filepath"
+
+    rm -rf $filepath
+
+    echo "deleted the file $filepath"
+
+done <<< $FILES_TO_DELETE
