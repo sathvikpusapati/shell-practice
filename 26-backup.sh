@@ -21,7 +21,7 @@ DAYS=${3:-14} #if not provided consider as 14 days
 
 
 
-sudo mkdir -p $folder 
+sudo mkdir -p $log_folder 
 
 if [ $id -ne 0 ]; then
     echo -e "$R please give root access to continue$N" | tee -a $log_file
