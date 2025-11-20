@@ -10,7 +10,9 @@ log_folder="/var/log/shell-practice"
 
 script_name=$( echo $0 | cut -d "." -f1 )
 
-log_file=$log_folder/$script_name.log 
+# log_file=$log_folder/$script_name.log 
+
+log_file=$log_folder/backup.log  # modified for running script as command
 
 SOURCE_DIR=$1
 DEST_DIR=$2
