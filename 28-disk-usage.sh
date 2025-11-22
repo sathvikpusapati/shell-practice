@@ -12,5 +12,12 @@ do
     fi
 done <<< $DISK_USAGE
 
-echo -e "message body : $MESSAGE" # -e means 
+echo -e "message body : $MESSAGE" # -e means escape characters 
 
+sh 27-gmail.sh "pusapatisathvik@gmail.com" "HIGH DISK USAGE ALERT " "HIGH DISK USAGE" "$MESSAGE" "$IP_ADDRESS"
+
+# TO_ADDRESS=$1
+# SUBJECT=$2
+# ALERT_TYEPE=$3
+# MESSAGE_BODY=$4
+# IP_ADDRESS=$5
