@@ -12,5 +12,5 @@ do
     fi
 done <<< $DISK_USAGE
 
-echo "message body : $MESSAGE"
+echo -e "message body : $MESSAGE" # -e means 
 
